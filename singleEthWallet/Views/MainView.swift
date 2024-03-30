@@ -31,7 +31,9 @@ struct MainView: View {
             }
         }
         .onAppear(){
-            walletViewModal.loadEthWallet()
+            Task {
+                await  walletViewModal.loadEthWallet()
+            }
         }
     
     }

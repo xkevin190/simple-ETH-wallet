@@ -10,12 +10,13 @@ import UIKit
 
 
 extension UIColor {
-    static let raisinBlack = UIColor(hex: "#141917")
+    static let raisinBlack = UIColor(hex: "#252a2e")
     static let night = UIColor(hex: "#1C1E23")
     static let jet = UIColor(hex: "#1c2321")
     static let night2 = UIColor(hex: "#141619")
     static let davysGray = UIColor(hex: "#1d1d23")
     static let ligth = UIColor(hex: "#e6f1ff")
+    static let box = UIColor(hex: "#0c1013")
     
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var formattedHex = hex.trimmingCharacters(in: .whitespacesAndNewlines)

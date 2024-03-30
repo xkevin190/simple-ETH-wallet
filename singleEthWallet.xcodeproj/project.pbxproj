@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341CB3032BB857A8004F16F3 /* ButtonsTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3022BB857A8004F16F3 /* ButtonsTabs.swift */; };
+		341CB3052BB85E03004F16F3 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3042BB85E03004F16F3 /* Activity.swift */; };
+		341CB3072BB85E2D004F16F3 /* NFTs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3062BB85E2D004F16F3 /* NFTs.swift */; };
+		341CB3092BB85E69004F16F3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3082BB85E69004F16F3 /* HomeViewModel.swift */; };
+		341CB30E2BB87680004F16F3 /* RPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB30D2BB87680004F16F3 /* RPCService.swift */; };
+		341CB3122BB8A0CF004F16F3 /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3112BB8A0CF004F16F3 /* Transactions.swift */; };
+		341CB3142BB8A416004F16F3 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3132BB8A416004F16F3 /* APIResponse.swift */; };
+		341CB31A2BB8B0F2004F16F3 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3192BB8B0F2004F16F3 /* Cards.swift */; };
 		34B1C1C22BB6C5C10062D5AC /* singleEthWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1C1C12BB6C5C10062D5AC /* singleEthWalletApp.swift */; };
 		34B1C1C62BB6C5C30062D5AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34B1C1C52BB6C5C30062D5AC /* Assets.xcassets */; };
 		34B1C1C92BB6C5C30062D5AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34B1C1C82BB6C5C30062D5AC /* Preview Assets.xcassets */; };
@@ -47,6 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341CB3022BB857A8004F16F3 /* ButtonsTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTabs.swift; sourceTree = "<group>"; };
+		341CB3042BB85E03004F16F3 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		341CB3062BB85E2D004F16F3 /* NFTs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTs.swift; sourceTree = "<group>"; };
+		341CB3082BB85E69004F16F3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		341CB30D2BB87680004F16F3 /* RPCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCService.swift; sourceTree = "<group>"; };
+		341CB3112BB8A0CF004F16F3 /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
+		341CB3132BB8A416004F16F3 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		341CB3192BB8B0F2004F16F3 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		34B1C1BE2BB6C5C10062D5AC /* singleEthWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = singleEthWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B1C1C12BB6C5C10062D5AC /* singleEthWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = singleEthWalletApp.swift; sourceTree = "<group>"; };
 		34B1C1C52BB6C5C30062D5AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		341CB30C2BB87665004F16F3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				341CB30D2BB87680004F16F3 /* RPCService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		34B1C1B52BB6C5C10062D5AC = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +143,7 @@
 		34B1C1C02BB6C5C10062D5AC /* singleEthWallet */ = {
 			isa = PBXGroup;
 			children = (
+				341CB30C2BB87665004F16F3 /* Service */,
 				34B1C20D2BB733CD0062D5AC /* utils */,
 				34B1C1FB2BB6EB090062D5AC /* extension */,
 				34B1C1EE2BB6E52C0062D5AC /* components */,
@@ -164,6 +189,8 @@
 				34B1C1F72BB6E8850062D5AC /* CreateWallet.swift */,
 				34B1C1F92BB6E8940062D5AC /* MainView.swift */,
 				34B1C2062BB6FFD60062D5AC /* Home.swift */,
+				341CB3042BB85E03004F16F3 /* Activity.swift */,
+				341CB3062BB85E2D004F16F3 /* NFTs.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				34B1C2022BB6FD1A0062D5AC /* EthWallet.swift */,
+				341CB3112BB8A0CF004F16F3 /* Transactions.swift */,
+				341CB3132BB8A416004F16F3 /* APIResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				34B1C2002BB6FC3C0062D5AC /* WalletViewModel.swift */,
+				341CB3082BB85E69004F16F3 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -188,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				34B1C21F2BB750870062D5AC /* ButtonComponent.swift */,
+				341CB3022BB857A8004F16F3 /* ButtonsTabs.swift */,
+				341CB3192BB8B0F2004F16F3 /* Cards.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -350,6 +382,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B1C21D2BB7436D0062D5AC /* Helper.swift in Sources */,
+				341CB30E2BB87680004F16F3 /* RPCService.swift in Sources */,
+				341CB3032BB857A8004F16F3 /* ButtonsTabs.swift in Sources */,
 				34B1C1F82BB6E8850062D5AC /* CreateWallet.swift in Sources */,
 				34B1C1FA2BB6E8940062D5AC /* MainView.swift in Sources */,
 				34B1C1F02BB6E5C30062D5AC /* Welcome.swift in Sources */,
@@ -357,9 +391,15 @@
 				34B1C1FD2BB6EB180062D5AC /* Color.swift in Sources */,
 				34B1C2202BB750870062D5AC /* ButtonComponent.swift in Sources */,
 				34B1C20F2BB733FB0062D5AC /* Keychain.swift in Sources */,
+				341CB3122BB8A0CF004F16F3 /* Transactions.swift in Sources */,
 				34B1C2032BB6FD1A0062D5AC /* EthWallet.swift in Sources */,
+				341CB3072BB85E2D004F16F3 /* NFTs.swift in Sources */,
 				34B1C2072BB6FFD60062D5AC /* Home.swift in Sources */,
+				341CB3052BB85E03004F16F3 /* Activity.swift in Sources */,
+				341CB3092BB85E69004F16F3 /* HomeViewModel.swift in Sources */,
+				341CB31A2BB8B0F2004F16F3 /* Cards.swift in Sources */,
 				34B1C1C22BB6C5C10062D5AC /* singleEthWalletApp.swift in Sources */,
+				341CB3142BB8A416004F16F3 /* APIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

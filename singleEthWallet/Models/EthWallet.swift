@@ -13,13 +13,14 @@ struct EthereumWallet {
     let address: String
     let privateKey: Data
     var balance: Double
-    
+    var transaction: [Transaction]
     // Other properties like tokens, transactions, etc. can be added here
     
-    init(address: String, balance: Double, privateKey: Data) {
+    init(address: String, balance: Double, privateKey: Data, transactions: [Transaction]) {
         self.address = address
         self.balance = balance
         self.privateKey = privateKey
+        self.transaction = transactions
     }
     
     mutating func updateBalance(newBalance: Double) {

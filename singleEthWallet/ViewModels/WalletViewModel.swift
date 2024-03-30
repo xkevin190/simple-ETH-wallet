@@ -48,12 +48,13 @@ class WalletViewModel: ObservableObject {
             
             let privateKey = EthereumWallet.getPrivateKey(address: walletAddress, tempAddress: tempWalletAddress!)
             
-            print("arrive here!!!!", walletAddress.address)
+            let value = try await getBalanceAddress(for: walletAddress.address)
+            let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
             
             DispatchQueue.main.async {
                 withAnimation {
                     self.self.createWalletLoading.toggle()
-                    self.wallet = EthereumWallet(address: walletAddress.address, balance: 0.0, privateKey: privateKey!)
+                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey!, transactions: transactionHistory)
                     self.AppStatus = Helpers.AppStatus.walletLoaded
                     keychainModule.save(key: "Mnemonics", data: tMnemonics)
                 }
@@ -63,9 +64,11 @@ class WalletViewModel: ObservableObject {
     
     
     
-    func loadEthWallet() {
+    func loadEthWallet() async {
+   
         Task{
             let mnemonics = keychainModule.load(key: "Mnemonics") ?? nil
+            
             if (mnemonics != nil) {
                 guard let tempWalletAddress = EthereumWallet.GenerateBIT32Keystore(tMnemonics: mnemonics!),
                       let walletAddress = tempWalletAddress.addresses?.first,
@@ -73,12 +76,19 @@ class WalletViewModel: ObservableObject {
                     self.AppStatus = Helpers.AppStatus.initial
                     return
                 }
+                print(walletAddress.address)
+                
+                
+                let value = try await getBalanceAddress(for: walletAddress.address)
+                let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
+                
+              
                 DispatchQueue.main.async {
-                    withAnimation {
-                        self.wallet = EthereumWallet(address: walletAddress.address, balance: 0.0, privateKey: privateKey)
-                        self.AppStatus = Helpers.AppStatus.walletLoaded
-                    }
+                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey, transactions: transactionHistory)
+                    self.AppStatus = Helpers.AppStatus.walletLoaded
                 }
+                
+                
             } else {
                 DispatchQueue.main.async {
                     self.AppStatus = Helpers.AppStatus.initial

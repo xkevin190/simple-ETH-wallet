@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import IGIdenticon
+//import IGIdenticon
 
 struct Helpers {
     
@@ -16,6 +16,13 @@ struct Helpers {
         case walletLoading
         case walletLoaded
         case appLoading
+    }
+    
+    
+    static func parseAmount (amount: Double) -> String {// 50000000000000000 wei
+        let etherValue = amount / 1e18
+
+        return String(etherValue)
     }
     
     
