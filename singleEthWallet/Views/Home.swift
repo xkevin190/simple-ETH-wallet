@@ -31,7 +31,7 @@ struct Home: View {
         VStack(alignment: .leading, spacing: 10){
             
             VStack() {
-                Image(uiImage: Helpers.generateIdenticon(from: walletManager.wallet!.address)).resizable().frame(width: 100, height: 100).cornerRadius(10)
+//                Image(uiImage: Helpers.generateIdenticon(from: walletManager.wallet!.address)).resizable().frame(width: 100, height: 100).cornerRadius(10)
             }
             .frame(
                 width: 100,

@@ -11,7 +11,6 @@
 		341CB3052BB85E03004F16F3 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3042BB85E03004F16F3 /* Activity.swift */; };
 		341CB3072BB85E2D004F16F3 /* NFTs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3062BB85E2D004F16F3 /* NFTs.swift */; };
 		341CB3092BB85E69004F16F3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3082BB85E69004F16F3 /* HomeViewModel.swift */; };
-		341CB30E2BB87680004F16F3 /* RPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB30D2BB87680004F16F3 /* RPCService.swift */; };
 		341CB3122BB8A0CF004F16F3 /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3112BB8A0CF004F16F3 /* Transactions.swift */; };
 		341CB3142BB8A416004F16F3 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3132BB8A416004F16F3 /* APIResponse.swift */; };
 		341CB31A2BB8B0F2004F16F3 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341CB3192BB8B0F2004F16F3 /* Cards.swift */; };
@@ -35,6 +34,10 @@
 		34B1C21E2BB7436D0062D5AC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1C21C2BB7436D0062D5AC /* Helper.swift */; };
 		34B1C2202BB750870062D5AC /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1C21F2BB750870062D5AC /* ButtonComponent.swift */; };
 		34B1C2232BB7560A0062D5AC /* IGIdenticon in Frameworks */ = {isa = PBXBuildFile; productRef = 34B1C2222BB7560A0062D5AC /* IGIdenticon */; };
+		34F2AD322BB9BAAB00ED682B /* HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2AD312BB9BAAB00ED682B /* HelperTests.swift */; };
+		34F2AD362BB9C0F400ED682B /* KeychainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2AD352BB9C0F400ED682B /* KeychainTest.swift */; };
+		34F2AD382BB9C38300ED682B /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2AD372BB9C38300ED682B /* HttpRequest.swift */; };
+		34F2AD3F2BB9D68700ED682B /* EthWalletTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2AD3E2BB9D68700ED682B /* EthWalletTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +62,6 @@
 		341CB3042BB85E03004F16F3 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		341CB3062BB85E2D004F16F3 /* NFTs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTs.swift; sourceTree = "<group>"; };
 		341CB3082BB85E69004F16F3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		341CB30D2BB87680004F16F3 /* RPCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCService.swift; sourceTree = "<group>"; };
 		341CB3112BB8A0CF004F16F3 /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
 		341CB3132BB8A416004F16F3 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		341CB3192BB8B0F2004F16F3 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
@@ -82,6 +84,10 @@
 		34B1C20E2BB733FB0062D5AC /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		34B1C21C2BB7436D0062D5AC /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		34B1C21F2BB750870062D5AC /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
+		34F2AD312BB9BAAB00ED682B /* HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTests.swift; sourceTree = "<group>"; };
+		34F2AD352BB9C0F400ED682B /* KeychainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTest.swift; sourceTree = "<group>"; };
+		34F2AD372BB9C38300ED682B /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		34F2AD3E2BB9D68700ED682B /* EthWalletTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthWalletTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +121,7 @@
 		341CB30C2BB87665004F16F3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				341CB30D2BB87680004F16F3 /* RPCService.swift */,
+				34F2AD372BB9C38300ED682B /* HttpRequest.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -168,7 +174,11 @@
 		34B1C1D12BB6C5C30062D5AC /* singleEthWalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				34F2AD3B2BB9D0E300ED682B /* mockSession */,
 				34B1C1D22BB6C5C30062D5AC /* singleEthWalletTests.swift */,
+				34F2AD312BB9BAAB00ED682B /* HelperTests.swift */,
+				34F2AD352BB9C0F400ED682B /* KeychainTest.swift */,
+				34F2AD3E2BB9D68700ED682B /* EthWalletTest.swift */,
 			);
 			path = singleEthWalletTests;
 			sourceTree = "<group>";
@@ -239,6 +249,13 @@
 				34B1C21C2BB7436D0062D5AC /* Helper.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		34F2AD3B2BB9D0E300ED682B /* mockSession */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mockSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B1C21D2BB7436D0062D5AC /* Helper.swift in Sources */,
-				341CB30E2BB87680004F16F3 /* RPCService.swift in Sources */,
+				34F2AD382BB9C38300ED682B /* HttpRequest.swift in Sources */,
 				341CB3032BB857A8004F16F3 /* ButtonsTabs.swift in Sources */,
 				34B1C1F82BB6E8850062D5AC /* CreateWallet.swift in Sources */,
 				34B1C1FA2BB6E8940062D5AC /* MainView.swift in Sources */,
@@ -407,7 +424,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F2AD3F2BB9D68700ED682B /* EthWalletTest.swift in Sources */,
 				34B1C1D32BB6C5C30062D5AC /* singleEthWalletTests.swift in Sources */,
+				34F2AD322BB9BAAB00ED682B /* HelperTests.swift in Sources */,
+				34F2AD362BB9C0F400ED682B /* KeychainTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +655,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eth.single.wallet.singleEthWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -655,6 +679,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eth.single.wallet.singleEthWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

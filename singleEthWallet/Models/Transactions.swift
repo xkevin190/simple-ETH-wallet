@@ -32,7 +32,7 @@ struct ERC721Transaction: Codable {
 }
 
 
-struct Transaction: Codable {
+struct Transaction: Codable, Equatable {
     var blockNumber: String
     var timeStamp: String
     var hash: String
@@ -56,7 +56,7 @@ struct Transaction: Codable {
 }
 
 
-struct NFT: Codable  {
+struct NFT: Codable, Equatable  {
     
     let name: String
     let description: String

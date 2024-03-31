@@ -19,17 +19,22 @@ struct Helpers {
     }
     
     
-    static func parseAmount (amount: Double) -> String {// 50000000000000000 wei
+    static func parseAmount (amount: Double) -> String {
+       
         let etherValue = amount / 1e18
 
         return String(etherValue)
     }
     
     
-    static func generateIdenticon(from name: String) -> UIImage {
-        let identicon = Identicon()
-        return identicon.icon(from: name, size: CGSize(width: 100, height: 100)) ?? UIImage(imageLiteralResourceName: "logo")
-    }
+//    static func generateIdenticon(from name: String) -> UIImage {
+//        do {
+//            let identicon = Identicon()
+//            return identicon.icon(from: name, size: CGSize(width: 100, height: 100)) ?? UIImage(imageLiteralResourceName: "logo")
+//        } catch {
+//            return UIImage(imageLiteralResourceName: "logo")
+//        }
+//    }
     
     
     static func parseNFTUrl(urlString: String) -> String {

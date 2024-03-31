@@ -17,7 +17,7 @@ struct Cards: View {
         
         VStack(alignment: .leading) {
             HStack {
-                Image(uiImage: Helpers.generateIdenticon(from: from)).resizable().frame(width: 50, height: 50 ).background(.white).cornerRadius(10)
+//                Image(uiImage: Helpers.generateIdenticon(from: from)).resizable().frame(width: 50, height: 50 ).background(.white).cornerRadius(10)
                 
                 VStack(alignment: .leading){
                     Text("From: \(from)").foregroundColor(.white).lineLimit(1)

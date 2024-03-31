@@ -18,7 +18,7 @@ struct EthereumWallet: Codable  {
 
     
 
-    init(address: String, balance: Double, privateKey: Data, transactions: [Transaction], NFTs:[NFT]) {
+    init(address: String, balance: Double, privateKey: Data?, transactions: [Transaction], NFTs:[NFT]) {
         self.address = address
         self.balance = balance
         self.transaction = transactions
@@ -66,7 +66,7 @@ extension EthereumWallet {
     }
     
     
-    static  func ReadNFTContract (data: [ERC721Transaction]) async -> [NFT] {
+    static  func ReadNFTContract (data: [ERC721Transaction], httpRequest: HttpRequest) async -> [NFT] {
         do {
             let web3 = try await Web3.new(URL(string: "https://sepolia.drpc.org")!)
             let contract = web3.contract(Web3.Utils.erc721ABI, at: EthereumAddress("0xe6a150c75c6423e8573010a4504a099dd015c7db")!)!
@@ -77,7 +77,7 @@ extension EthereumWallet {
                     // Call the tokenURI method of the contract
                     let result = try await contract.createReadOperation("tokenURI", parameters: [tokenID])?.callContractMethod()
                     if let unwrappedResult = result, let link = unwrappedResult["0"] as? String {
-                        let nft =  try await getNFT(url:Helpers.parseNFTUrl(urlString: link))
+                        let nft =  try await httpRequest.getNFT(url:Helpers.parseNFTUrl(urlString: link))
                     
                         if(nft != nil){
                             NFTs.append(nft!)

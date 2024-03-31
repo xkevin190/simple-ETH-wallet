@@ -36,8 +36,13 @@ struct NFTs: View {
 
                         Divider().background(.white).padding(.top, -5)
                         VStack(alignment: .leading) {
-                            Text(ntf.name).foregroundColor(.white)
-                        }.padding()
+                            Text(ntf.name)
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .padding(.top, -10)
+                                .padding(.bottom, 10)
+
+                        }
                         
                     }
                     .frame(width: carSize)
