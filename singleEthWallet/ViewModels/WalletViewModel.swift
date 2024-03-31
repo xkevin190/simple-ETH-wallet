@@ -76,19 +76,23 @@ class WalletViewModel: ObservableObject {
             
             let value = try await getBalanceAddress(for: walletAddress.address)
             let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
+            let rawNFTTrasactions = try await getNFTContract(address: walletAddress.address)
+            let parsedNFTData =  await EthereumWallet.ReadNFTContract(data: rawNFTTrasactions)
+            
+            Helpers.setStorageValue(value: value, key: "balance")
+            Helpers.setStorageValue(value: transactionHistory, key: "transaction")
+            Helpers.setStorageValue(value: parsedNFTData, key: "nfts")
             
             DispatchQueue.main.async {
                 withAnimation {
                     self.self.createWalletLoading.toggle()
-                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey!, transactions: transactionHistory, NFTs: [])
+                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey!, transactions: transactionHistory, NFTs: parsedNFTData)
                     self.AppStatus = Helpers.AppStatus.walletLoaded
                     keychainModule.save(key: "Mnemonics", data: tMnemonics)
                 }
             }
         }
     }
-    
-    
     
     func loadEthWallet() async {
         Task{
@@ -102,20 +106,33 @@ class WalletViewModel: ObservableObject {
                     return
                 }
                 
-                let value = try await getBalanceAddress(for: walletAddress.address)
-                let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
-                let rawNFTTrasactions = try await getNFTContract(address: walletAddress.address)
-                let parsedNFTData =  await EthereumWallet.ReadNFTContract(data: rawNFTTrasactions)
+                do {
+                    let value = try await getBalanceAddress(for: walletAddress.address)
+                    let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
+                    let rawNFTTrasactions = try await getNFTContract(address: walletAddress.address)
+                    let parsedNFTData =  await EthereumWallet.ReadNFTContract(data: rawNFTTrasactions)
                 
-                
-                Helpers.setStorageValue(value: value  , key: "balance")
-        
-                
-                print(Helpers.getStorageValue(type: String.self, key: "balance"))
-                
-                DispatchQueue.main.async {
-                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey, transactions: transactionHistory, NFTs: parsedNFTData)
-                    self.AppStatus = Helpers.AppStatus.walletLoaded
+                    /// save the fechet in the  phone storage
+                     
+                    Helpers.setStorageValue(value: value, key: "balance")
+                    Helpers.setStorageValue(value: transactionHistory, key: "transaction")
+                    Helpers.setStorageValue(value: parsedNFTData, key: "nfts")
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey, transactions: transactionHistory, NFTs: parsedNFTData)
+                        self.AppStatus = Helpers.AppStatus.walletLoaded
+                    }
+                } catch {
+                    let value: Double = Helpers.getStorageValue(type: Double.self, key: "nfts") ?? 0.0
+                    let transactionHistory: [Transaction] = Helpers.getStorageValue(type: [Transaction].self, key: "transaction") ?? []
+                    
+                    let parsedNFTData: [NFT] =  Helpers.getStorageValue(type: [NFT].self, key: "nfts") ?? []
+                    DispatchQueue.main.async {
+                        
+                        self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey, transactions: transactionHistory, NFTs: parsedNFTData)
+                        self.AppStatus = Helpers.AppStatus.walletLoaded
+                    }
                 }
             } else {
                 DispatchQueue.main.async {

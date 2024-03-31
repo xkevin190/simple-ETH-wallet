@@ -47,23 +47,21 @@ struct Helpers {
     }
     
     
-    static func setStorageValue<T: Encodable>(value: T, key: String ) {
+    static func setStorageValue<T: Encodable>(value: T, key: String) {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(value) {
             UserDefaults.standard.set(encoded, forKey: key)
         }
     }
-    
-    
+
     static func getStorageValue<T: Decodable>(type: T.Type, key: String) -> T? {
-        if let saveData = UserDefaults.standard.data(forKey: key),
-           let data = try? JSONDecoder().decode(T.self, from: saveData) {
-            print("Successfully decoded data:", data)
-            return data
+        if let savedData = UserDefaults.standard.data(forKey: key),
+           let decodedObject = try? JSONDecoder().decode(type, from: savedData) {
+            return decodedObject
         }
-        
         return nil
     }
+
 
 
 }
