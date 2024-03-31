@@ -78,7 +78,7 @@ class WalletViewModel: ObservableObject {
                 }
                 print(walletAddress.address)
                 
-                
+                await getNFT()
                 let value = try await getBalanceAddress(for: walletAddress.address)
                 let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
                 

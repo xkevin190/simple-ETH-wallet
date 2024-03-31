@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct Activity: View {
+    
+    var normalTransactions: [Transaction]
     var body: some View {
-        ZStack {
-            Color.white.ignoresSafeArea()
-            
-            Text("Activity")
+
+        ForEach(normalTransactions, id: \.hash) { transaction in
+            Cards(from: transaction.from, confirmations: transaction.confirmations, TXID: transaction.hash, amount: Double(transaction.value) ?? 0.0)
         }
+        
     }
 }
 
 #Preview {
-    Activity()
+    Activity(normalTransactions: [])
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-//import IGIdenticon
+import IGIdenticon
 
 struct Helpers {
     
@@ -26,8 +26,8 @@ struct Helpers {
     }
     
     
-//    static func generateIdenticon(from name: String) -> UIImage {
-//        let identicon = Identicon()
-//        return identicon.icon(from: name, size: CGSize(width: 100, height: 100)) ?? UIImage(imageLiteralResourceName: "logo")
-//    }
+    static func generateIdenticon(from name: String) -> UIImage {
+        let identicon = Identicon()
+        return identicon.icon(from: name, size: CGSize(width: 100, height: 100)) ?? UIImage(imageLiteralResourceName: "logo")
+    }
 }
