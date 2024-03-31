@@ -32,7 +32,6 @@ struct Home: View {
             
             VStack() {
                 Image(uiImage: Helpers.generateIdenticon(from: walletManager.wallet!.address)).resizable().frame(width: 100, height: 100).cornerRadius(10)
-                
             }
             .frame(
                 width: 100,
@@ -48,12 +47,12 @@ struct Home: View {
                 .foregroundColor(.white)
             
             HStack {
-                Text("0xC16E9B216E57d5B72fB38dAc3e64A28B6DC06528")
+                Text(walletManager.wallet?.address ?? "")
                     .lineLimit(1)
                     .foregroundColor(Color(UIColor.ligth))
                 
                 Button {
-                    UIPasteboard.general.string = "0xC16E9B216E57d5B72fB38dAc3e64A28B6DC06528"
+                    UIPasteboard.general.string = walletManager.wallet?.address ?? ""
                 } label: {
                     VStack {
                         Image(systemName: "doc.on.doc").padding(10)
@@ -64,10 +63,6 @@ struct Home: View {
                     )
                 }
             }
-            
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis laoreet leo sed mollis. Aliquam et posuere odio")
-                .lineLimit(1)
-                .foregroundColor(Color(UIColor.ligth))
             
             HStack {
                 VStack(spacing: 5) {
@@ -80,7 +75,9 @@ struct Home: View {
                 Spacer()
                 
                 Button {
-                    
+                    Task{
+                        await walletManager.updateInformation()
+                    }
                 } label: {
                     VStack {
                         Image(systemName: "arrow.clockwise").padding(10)
@@ -98,7 +95,7 @@ struct Home: View {
             
             HStack {
                 Text("Subscriptions 0").foregroundColor(Color(UIColor.ligth))
-                Text("subscriber 10").foregroundColor(Color(UIColor.ligth))
+                Text("subscribers 10").foregroundColor(Color(UIColor.ligth))
             }
             Divider().background(.white)
             
@@ -108,16 +105,19 @@ struct Home: View {
                 }
             }
             
-            if (homeManager.tabSelected == TabSelect.activity ) {
+            ZStack(alignment: .top) {
                 Activity(normalTransactions: walletManager.wallet?.transaction ?? [])
-                    .transition(.move(edge: .leading))
-            }
-            
-            if (homeManager.tabSelected == TabSelect.nfts ) {
-                NFTs()
+                    .offset(x: homeManager.tabSelected == TabSelect.activity ? 0 :  -UIScreen.main.bounds.width)
                     .transition(.move(edge: .trailing))
+                
+                
+                
+                NFTs(nfts: walletManager.wallet?.NFTs ?? [] )
+                    .offset(x: homeManager.tabSelected == TabSelect.nfts ? 0 : UIScreen.main.bounds.width)
+                    .transition(.move(edge: .leading))
+                
             }
-            
+            .frame(maxWidth: .infinity)
             Spacer()
         }
         

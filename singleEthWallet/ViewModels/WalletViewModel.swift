@@ -18,6 +18,32 @@ class WalletViewModel: ObservableObject {
     @Published var AppStatus = Helpers.AppStatus.appLoading
     
     
+    
+    func updateInformation() async {
+        if (wallet != nil) {
+            do {
+                let value = try await getBalanceAddress(for: wallet!.address)
+                let transactionHistory = try await getTransactionHistory(for: wallet!.address)
+                let rawNFTTrasactions = try await getNFTContract(address: wallet!.address)
+                let parsedNFTData =  await EthereumWallet.ReadNFTContract(data: rawNFTTrasactions)
+                
+            
+                DispatchQueue.main.async {
+                    self.wallet?.updateBalance(newBalance: value)
+                    self.wallet?.updateTransaction(newTransactions: transactionHistory)
+                    self.wallet?.updateNFTs(newNfts: parsedNFTData)
+                }
+                
+            } catch {
+                print("Error updating information")
+            }
+            
+        }
+        
+    }
+    
+    
+    
     func createWallet() {
         Task{
             DispatchQueue.main.async {
@@ -54,7 +80,7 @@ class WalletViewModel: ObservableObject {
             DispatchQueue.main.async {
                 withAnimation {
                     self.self.createWalletLoading.toggle()
-                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey!, transactions: transactionHistory)
+                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey!, transactions: transactionHistory, NFTs: [])
                     self.AppStatus = Helpers.AppStatus.walletLoaded
                     keychainModule.save(key: "Mnemonics", data: tMnemonics)
                 }
@@ -65,7 +91,6 @@ class WalletViewModel: ObservableObject {
     
     
     func loadEthWallet() async {
-   
         Task{
             let mnemonics = keychainModule.load(key: "Mnemonics") ?? nil
             
@@ -76,19 +101,22 @@ class WalletViewModel: ObservableObject {
                     self.AppStatus = Helpers.AppStatus.initial
                     return
                 }
-                print(walletAddress.address)
                 
-                await getNFT()
                 let value = try await getBalanceAddress(for: walletAddress.address)
                 let transactionHistory = try await getTransactionHistory(for: walletAddress.address)
+                let rawNFTTrasactions = try await getNFTContract(address: walletAddress.address)
+                let parsedNFTData =  await EthereumWallet.ReadNFTContract(data: rawNFTTrasactions)
                 
-              
+                
+                Helpers.setStorageValue(value: value  , key: "balance")
+        
+                
+                print(Helpers.getStorageValue(type: String.self, key: "balance"))
+                
                 DispatchQueue.main.async {
-                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey, transactions: transactionHistory)
+                    self.wallet = EthereumWallet(address: walletAddress.address, balance: value, privateKey: privateKey, transactions: transactionHistory, NFTs: parsedNFTData)
                     self.AppStatus = Helpers.AppStatus.walletLoaded
                 }
-                
-                
             } else {
                 DispatchQueue.main.async {
                     self.AppStatus = Helpers.AppStatus.initial

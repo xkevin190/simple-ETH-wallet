@@ -8,23 +8,35 @@
 import Foundation
 import web3swift
 import Web3Core
+import BigInt
 
-struct EthereumWallet {
+struct EthereumWallet: Codable  {
     let address: String
-    let privateKey: Data
     var balance: Double
     var transaction: [Transaction]
-    // Other properties like tokens, transactions, etc. can be added here
+    var NFTs: [NFT];
+
     
-    init(address: String, balance: Double, privateKey: Data, transactions: [Transaction]) {
+
+    init(address: String, balance: Double, privateKey: Data, transactions: [Transaction], NFTs:[NFT]) {
         self.address = address
         self.balance = balance
-        self.privateKey = privateKey
         self.transaction = transactions
+        self.NFTs = NFTs
     }
     
     mutating func updateBalance(newBalance: Double) {
         self.balance = newBalance
+    }
+    
+    mutating func updateTransaction(newTransactions: [Transaction]) {
+
+        self.transaction = newTransactions
+    }
+    
+    
+    mutating func updateNFTs (newNfts: [NFT]) {
+        self.NFTs = newNfts
     }
 }
 
@@ -38,7 +50,7 @@ extension EthereumWallet {
     
     static func GenerateBIT32Keystore (tMnemonics: String) -> BIP32Keystore? {
         let tempWalletAddress = try? BIP32Keystore(mnemonics: tMnemonics, password: "", prefixPath: "m/44'/77777'/0'/0")
-      
+        
         return tempWalletAddress
     }
     
@@ -53,4 +65,32 @@ extension EthereumWallet {
         return privateKey
     }
     
+    
+    static  func ReadNFTContract (data: [ERC721Transaction]) async -> [NFT] {
+        do {
+            let web3 = try await Web3.new(URL(string: "https://sepolia.drpc.org")!)
+            let contract = web3.contract(Web3.Utils.erc721ABI, at: EthereumAddress("0xe6a150c75c6423e8573010a4504a099dd015c7db")!)!
+            var NFTs: [NFT] = []
+            for transaction in data {
+                
+                if let tokenID = BigInt(transaction.tokenID) {
+                    // Call the tokenURI method of the contract
+                    let result = try await contract.createReadOperation("tokenURI", parameters: [tokenID])?.callContractMethod()
+                    if let unwrappedResult = result, let link = unwrappedResult["0"] as? String {
+                        let nft =  try await getNFT(url:Helpers.parseNFTUrl(urlString: link))
+                    
+                        if(nft != nil){
+                            NFTs.append(nft!)
+                        }
+                        
+                    }
+                }
+            }
+            
+            
+            return NFTs
+        } catch {
+            return []
+        }
+    }
 }

@@ -41,7 +41,6 @@ struct Cards: View {
             .padding(.top, 5)
             .padding(.horizontal)
         }
-        
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .background(Color(UIColor.box))
         .cornerRadius(10)
