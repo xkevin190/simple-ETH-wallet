@@ -1,6 +1,6 @@
 ## Simple Wallet ETH
 
-Welcome to the Ethereum Wallet! This application is a test app designed to showcase the functionality of viewing Ethereum (ETH) wallet data without the capability to send transactions. It provides a secure environment for users to explore their Ethereum balances, transaction history, and view NFT (Non-Fungible Token) tokens associated with their wallet.
+Welcome to the Ethereum Wallet! This application is a test app designed to showcase the functionality of viewing Ethereum (ETH) wallet data without the capability to send transactions. It provides a environment for users to explore their Ethereum balances, transaction history, and view NFT (Non-Fungible Token) tokens associated with their wallet.
 
 
 ### Ethereum Wallet (SwiftUI) - Application Overview
