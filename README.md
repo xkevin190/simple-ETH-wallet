@@ -38,7 +38,7 @@ For storing data in this application, the following methods were used:
 2) **KeychainSwift**: Once the wallet is created, the mnemonic is stored in Apple's Keychain for quick and secure loading of the wallet when the application is closed and reopened.
 
 
-Test video about hot the aplication is working on:
+## Test video about hot the aplication is working on:
 
 https://github.com/xkevin190/simple-ETH-wallet/assets/37220428/afdc3dde-1843-436f-9659-e296f373066e
 
