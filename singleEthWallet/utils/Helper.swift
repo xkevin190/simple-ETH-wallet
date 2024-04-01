@@ -26,7 +26,6 @@ struct Helpers {
         return String(etherValue)
     }
     
-    
 //    static func generateIdenticon(from name: String) -> UIImage {
 //        do {
 //            let identicon = Identicon()
@@ -67,6 +66,10 @@ struct Helpers {
         return nil
     }
 
+    static func removeStorageData(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+
+    }
 
 
 }

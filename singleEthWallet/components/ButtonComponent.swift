@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ButtonComponent: View {
+    var Title: String
     var loading: Bool
     var actionCreate: ()-> Void
-    
+  
     var body: some View {
         Button {
             withAnimation {
@@ -24,7 +25,7 @@ struct ButtonComponent: View {
                         .padding()
                 }
                 if !loading {
-                    Text("Create Wallet")
+                    Text(Title)
                         .fontWeight(.semibold)
                         .foregroundColor(Color(UIColor.ligth)).padding()
                 }

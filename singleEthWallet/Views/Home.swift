@@ -16,6 +16,7 @@ struct Home: View {
         ZStack{
             Color(UIColor.night).ignoresSafeArea()
             
+            
             ScrollView(.vertical, showsIndicators: false) {
                 WalletInformation()
             }
@@ -29,9 +30,18 @@ struct Home: View {
     
     @ViewBuilder func WalletInformation() -> some View {
         VStack(alignment: .leading, spacing: 10){
-            
+            HStack{
+                Spacer()
+                Button {
+                    walletManager.closeSession()
+                } label: {
+                    Text("Exit")
+                }
+                
+            }
+            Divider()
             VStack() {
-//                Image(uiImage: Helpers.generateIdenticon(from: walletManager.wallet!.address)).resizable().frame(width: 100, height: 100).cornerRadius(10)
+                Image("identico1").resizable().frame(width: 100, height: 100).cornerRadius(10)
             }
             .frame(
                 width: 100,
@@ -67,7 +77,7 @@ struct Home: View {
             HStack {
                 VStack(spacing: 5) {
                     Text("Balance").foregroundColor(.white).fontWeight(.semibold)
-                    Text(Helpers.parseAmount(amount: walletManager.wallet!.balance ))
+                    Text(Helpers.parseAmount(amount: walletManager.wallet?.balance ?? 0.0 ))
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
