@@ -12,7 +12,10 @@ import web3swift
 import Web3Core
 import BigInt
 
+// i know this is not secure at all o going this let free Key for this week
 let apiKey = "4CNWF3CRCNSUP3MQCF5UKXYZ7Z76H2KEPT"
+
+
 let url = "api-sepolia.etherscan.io"
 
 
