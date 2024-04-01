@@ -37,6 +37,10 @@ For storing data in this application, the following methods were used:
 
 2) **KeychainSwift**: Once the wallet is created, the mnemonic is stored in Apple's Keychain for quick and secure loading of the wallet when the application is closed and reopened.
 
+## Networks used
+
+To obtain data for both regular transactions and ERC721 transactions, we utilized the free Etherscan API on the Sepolia network.
+
 
 ## Test video about hot the aplication is working on:
 
